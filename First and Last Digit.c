@@ -1,4 +1,4 @@
-QUE: https://www.codechef.com/problems/FLOW004
+//If Give an integer N . Write a program to obtain the sum of the first and last digits of this number.
 #include <iostream>
 using namespace std;
 
