@@ -1,2 +1,1 @@
-# CODECHEF
-Still Cooking
+Questions & solution of codechef , leetcode and hackerrank
