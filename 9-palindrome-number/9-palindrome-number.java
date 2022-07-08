@@ -9,9 +9,6 @@ class Solution {
             s=s*10+(x%10);
             x=x/10;
         }
-        if(s==m)
-            return true;
-        else
-            return false;
+        return s==m;
     }
 }
