@@ -1,10 +1,11 @@
 class Solution {
     public int trailingZeroes(int n) {
-    int c=0;
-        for(int i=5;i<=n;i=i*5){
-            c=c+n/i;
+        int res = 0;
+        while (n >= 5) {
+            res += n / 5;
+            n = n / 5;
         }
-    return c;
+        return res;
     }
 }
 //sum(n/5 n/25................
