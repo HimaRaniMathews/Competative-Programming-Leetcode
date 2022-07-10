@@ -1,28 +1,18 @@
 class Solution {
-       public String longestCommonPrefix(String[] strs) {
-        // Longest common prefix string
-        StringBuilder longestCommonPrefix = new StringBuilder();
-        // Base condition
-        if (strs == null || strs.length == 0) {
-            return longestCommonPrefix.toString();
-        }
-        // Find the minimum length string from the array
-        int minimumLength = strs[0].length();
-        for (int i = 1; i < strs.length; i++) {
-            minimumLength = Math.min(minimumLength, strs[i].length());
-        }
-        // Loop for the minimum length
-        for (int i = 0; i < minimumLength; i++) {
-            // Get the current character from first string
-            char current = strs[0].charAt(i);
-            // Check if this character is found in all other strings or not
-            for (String str : strs) {
-                if (str.charAt(i) != current) {
-                    return longestCommonPrefix.toString();
-                }
+    public String longestCommonPrefix(String[] strs) {
+     if(strs==null || strs.length==0)   return "";
+     Arrays.sort(strs);
+    int c=0;
+        String f=strs[0];
+        String l=strs[strs.length-1];
+        while(c<(f.length())){
+            if(f.charAt(c)==l.charAt(c)){
+                c++;
             }
-            longestCommonPrefix.append(current);
+            else{
+                break;
+            }
         }
-        return longestCommonPrefix.toString();
+        return c==0?"":f.substring(0,c);
     }
 }
