@@ -14,6 +14,6 @@ class Solution {
             ns+=nums[i]-nums[i-k];
              max=Math.max(max,ns);
         }
-        return (max*1.0)/k;
+        return (double)max/k;
     }
 }
