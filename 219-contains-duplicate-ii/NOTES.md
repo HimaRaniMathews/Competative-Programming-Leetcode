@@ -1,3 +1,5 @@
+### Using Maps
+```
  public boolean containsNearbyDuplicate(int[] nums, int k) {
         Map<Integer,Integer> m=new HashMap<>();
         for(int i=0;i<nums.length;i++){
@@ -9,3 +11,5 @@
         }
         return false;
     }
+    
+```
