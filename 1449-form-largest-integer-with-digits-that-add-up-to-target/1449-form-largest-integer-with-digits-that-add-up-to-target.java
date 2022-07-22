@@ -1,21 +1,33 @@
 class Solution {
     public String largestNumber(int[] cost, int target) {
-        int[] dp = new int[target + 1];
-        for (int t = 1; t <= target; ++t) {
-            dp[t] = -10000;
-            for (int i = 0; i < 9; ++i) {
-                if (t >= cost[i])
-                    dp[t] = Math.max(dp[t], 1 + dp[t - cost[i]]);
+        String[] mem = new String[target+1];
+        Map<Integer, String> s = new HashMap<>();
+        int n = cost.length;
+        for (int i = 0; i < n; i++) {
+            if (cost[i] <= target) {
+                mem[cost[i]] = "" + (i+1);
+                s.put(cost[i], "" + (i+1));
             }
         }
-        if (dp[target] < 0) return "0";
-        StringBuilder res = new StringBuilder();
-        for (int i = 8; i >= 0; --i) {
-            while (target >= cost[i] && dp[target] == dp[target - cost[i]] + 1) {
-                res.append(1 + i);
-                target -= cost[i];
+        for (int i = 1; i < target + 1; i++) {
+            String res = "0";
+            if (mem[i] != null) {
+                res = "" + mem[i];
             }
+            for (int c : s.keySet()) {
+                if (i - c > 0 && mem[i - c] != null 
+                        && !mem[i - c].equals("0")) {
+                    String pot = s.get(c) + mem[i - c];
+                    if (pot.length() > res.length()) {
+                        res = pot;
+                    } else if (pot.length() == res.length() 
+                            && pot.compareTo(res) > 0) {
+                        res = pot;
+                    }  
+                }
+            }
+            mem[i] = res;
         }
-        return res.toString();
+        return mem[target];
     }
 }
